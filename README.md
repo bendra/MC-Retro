@@ -8,8 +8,8 @@ launcher and minimal changes to make it compile and run on a current JVM.
 
 Written in 1997 using Java 1.1 and AWT 1.0 in IBM VisualAge for Java (the IDE comments
 reading "This method was created by a SmartGuide" are its fingerprints). Deployed as a
-browser applet in the era of Netscape Navigator 4, published on the web, and recognized
-with awards — it was one of the projects that launched the author's career as a software
+browser applet in the era of Netscape Navigator 4, published on the web, and it won some
+web awards — it was one of the projects that help launched my career as a software
 engineer.
 
 Some code looks odd to a modern eye, but I'm rather proud of it. I think it represents
