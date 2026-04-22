@@ -21,7 +21,8 @@ Collections framework even existed. Architecture heavily influinced by ideas whi
 encountered in the then-new Gang of Four *Design Patterns* book, applied in a new
 language that was itself less than two years old.
 
-`Source.zip` is the original 1997 archive, included as an artifact.
+The `archive/` directory contains the original 1997 source archive and the 1999 compiled
+deployment packages (see Structure below).
 
 ## Requirements
 
@@ -68,7 +69,10 @@ Difficulty increases each level; smart evasive missiles appear on alternating le
 VideoGame/    original 1997 framework (22 files)
 v2/           original 1997 game logic (20 files)
 *.gif         sprite images
-Source.zip    original 1997 archive
+archive/
+  Source.zip          original source archive (1997)
+  missilecommand.zip  compiled Netscape/jar deployment (1999)
+  videogame.cab       compiled Internet Explorer deployment (1999)
 MissileCommandStandalone.java   standalone launcher (new)
 Makefile
 ```
