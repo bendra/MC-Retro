@@ -23,7 +23,7 @@ language that was itself less than two years old.
 The `archive/` directory contains the original 1997 source archive and the 1999 
 compiled deployment packages (see Structure below). Note that the compiled archive 
 files are .zip and .cab files - the .jar file format was just being introduced in 1997 
-and did not have widespread browser support at the time, Netscape Navigator supported
+and did not have widespread browser support at the time. Netscape Navigator supported
 zip files for java applets, Internet Explorer use cab files. So the standard approach
 in 1997 would have been to use a tag like
 ```
