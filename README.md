@@ -10,8 +10,7 @@ Written in 1997 using Java 1.1 and AWT 1.0 in IBM VisualAge for Java (the IDE co
 reading "This method was created by a SmartGuide" are its fingerprints). Deployed as a
 browser applet in the era of Netscape Navigator 4, published on the web (originally 
 Geocities), also featured on some applet gallaries. It won some web awards, and got 
-enough attention that it's probably fair to say that it was one of the projects that 
-help launched my career as a software engineer.
+enough attention that I felt encouraged to pursue a career as a software engineer.
 
 Some code looks odd to a modern eye, but I'm rather proud of it. I think it represents
 a fairly sophisticated design for its time: a reusable game framework separated into
