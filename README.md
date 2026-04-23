@@ -20,8 +20,17 @@ Collections framework even existed. Architecture heavily influinced by ideas whi
 encountered in the then-new Gang of Four *Design Patterns* book, applied in a new
 language that was itself less than two years old.
 
-The `archive/` directory contains the original 1997 source archive and the 1999 compiled
-deployment packages (see Structure below).
+The `archive/` directory contains the original 1997 source archive and the 1999 
+compiled deployment packages (see Structure below). Note that the compiled archive 
+files are .zip and .cab files - the .jar file format was just being introduced in 1997 
+and did not have widespread browser support at the time, Netscape Navigator supported
+zip files for java applets, Internet Explorer use cab files. So the standard approach
+in 1997 would have been to use a tag like
+```
+<applet height=435 width=500 code="v2.MissileCommandApplet.class" archive = "missilecommand.zip">
+   <param name="cabbase" value="videogame.cab">
+</applet>
+```
 
 ## Requirements
 
