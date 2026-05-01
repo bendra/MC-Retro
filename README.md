@@ -7,25 +7,34 @@ launcher and minimal changes to make it compile and run on a current JVM.
 ## Historical Context
 
 Written in 1997 using Java 1.1 and AWT 1.0 in IBM VisualAge for Java (the IDE comments
-reading "This method was created by a SmartGuide" are its fingerprints). Deployed as a
-browser applet in the era of Netscape Navigator 4, published on the web (originally 
-Geocities), also featured on some applet gallaries. It won some web awards, and got 
-enough attention that I felt encouraged to pursue a career as a software engineer.
+reading "This method was created by a SmartGuide" are its fingerprints; IBM later
+donated the next-generation VisualAge codebase to the Eclipse Foundation in 2001, making
+this a product of the direct ancestor of the IDE that would define Java development for
+the following decade). Deployed as a browser applet in the era of Netscape Navigator 4,
+published on the web (originally Geocities), also featured on some applet gallaries. It
+won some web awards, and got enough attention that I felt encouraged to pursue a career
+as a software engineer.
 
 Some code looks odd to a modern eye, but I'm rather proud of it. I think it represents
 a fairly sophisticated design for its time: a reusable game framework separated into
-its own package `VideoGame/` with Observer pattern, interface-driven abstractions, and
-level manager state machine, all built by a self-taught programmer before the Java
-Collections framework even existed. Architecture heavily influinced by ideas which I
-encountered in the then-new Gang of Four *Design Patterns* book, applied in a new
-language that was itself less than two years old.
+its own package `VideoGame/` with Observer pattern (`java.util.Observable`, itself
+deprecated in Java 9), interface-driven abstractions, and level manager state machine,
+all built by a self-taught programmer before the Java Collections framework even
+existed. The code uses the AWT 1.0 event model (`mouseDown`, `keyDown`, raw `Event`
+class) rather than the Java 1.1 Listener model — likely a deliberate choice to remain
+compatible with Netscape 3.x users still running Java 1.0.3 runtimes. Architecture
+heavily influinced by ideas which I encountered in the then-recent Gang of Four
+*Design Patterns* book, applied in a new language that was itself less than two years
+old.
 
 The `archive/` directory contains the original 1997 source archive and the 1999 
 compiled deployment packages (see Structure below). Note that the compiled archive 
-files are .zip and .cab files - the .jar file format was just being introduced in 1997 
-and did not have widespread browser support at the time. Netscape Navigator supported
-zip files for java applets, Internet Explorer use cab files. So the standard approach
-in 1997 would have been to use a tag like
+files are `.zip` and `.cab` rather than `.jar`. The `.jar` format arrived with Java 1.1,
+but Netscape 3.x — still widely used through 1997 — shipped with Java 1.0.2/1.0.3 and
+had no JAR support at all. (Browser upgrades meant a 10–20 MB download over a 28.8k
+modem and nothing pushed them automatically, so old versions lingered for years.) Netscape used zip archives, Internet Explorer required cab
+files. Zip was the only format that worked everywhere. So the standard approach in 1997
+would have been to use a tag like
 ```
 <applet height=435 width=500 code="v2.MissileCommandApplet.class" archive = "missilecommand.zip">
    <param name="cabbase" value="videogame.cab">
@@ -34,7 +43,12 @@ in 1997 would have been to use a tag like
 
 ## Requirements
 
-**Java 11–21** (Java 22+ removed `java.applet.Applet`, which the original code uses).
+**Java 11–21.** Java 22+ removed `java.applet.Applet` as the final formal step in
+retiring the applet platform. Applets had already been dead in practice for years:
+Chrome dropped the Java plugin in 2015, Firefox in 2017, and Apple disabled NPAPI
+plugins in Safari around the same time. By Java 22, the removal was an acknowledgment
+of a technology that had been unusable in browsers for nearly a decade.
+
 Java 21 LTS is recommended.
 
 On macOS with Homebrew:
@@ -88,7 +102,10 @@ Makefile
 ## Changes from the 1997 original
 
 The goal was to preserve the original source as faithfully as possible. Two things
-required changes, and one new file was added.
+required changes, and one new file was added. The Makefile passes `-Xlint:-deprecation`
+to suppress deprecation warnings; without it the build generates warnings from the AWT
+1.0 event model, `Observable`, `Applet`, and raw `Vector` — APIs spanning Java 1.0
+through Java 9 in their deprecation dates.
 
 ### `VideoGame/DynamicManager.java` — pause/resume threading
 
